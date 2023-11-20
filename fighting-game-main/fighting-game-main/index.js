@@ -187,6 +187,16 @@ function animate() {
 
   player.velocity.x = 0
   enemy.velocity.x = 0
+  player_ground_flag = true
+  enemy_ground_flag = true
+
+  if (player.position.y < 330){
+    player_ground_flag = false
+  }
+
+  if (enemy.position.y < 330){
+    enemy_ground_flag = false
+  }
 
   // player movement
 
@@ -206,7 +216,7 @@ function animate() {
   // } else if (player.velocity.y > 0) {
   //   player.switchSprite('fall')
   // }
-  if (keys.w.pressed) {
+  if (keys.w.pressed && player_ground_flag) {
     player.velocity.y = -20 
   }
 
@@ -222,11 +232,14 @@ function animate() {
   }
 
   // jumping
-  if (enemy.velocity.y < 0) {
-    enemy.switchSprite('jump')
-  } else if (enemy.velocity.y > 0) {
-    enemy.switchSprite('fall')
+  if (keys.ArrowUp.pressed && enemy_ground_flag) {
+    enemy.velocity.y = -20 
   }
+  // if (enemy.velocity.y < 0) {
+  //   enemy.switchSprite('jump')
+  // } else if (enemy.velocity.y > 0) {
+  //   enemy.switchSprite('fall')
+  // }
 
   // detect for collision & enemy gets hit
   if (
@@ -344,6 +357,9 @@ window.addEventListener('keyup', (event) => {
       break
     case 'ArrowLeft':
       keys.ArrowLeft.pressed = false
+      break
+    case 'ArrowUp':
+      keys.ArrowUp.pressed = false
       break
   }
 })
