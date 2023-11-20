@@ -161,12 +161,20 @@ const keys = {
   },
   ArrowLeft: {
     pressed: false
+  },
+  w: {
+    pressed: false
+  },
+  ArrowUp: {
+    pressed: false
   }
+
 }
 
 decreaseTimer()
 
 function animate() {
+  console.log(player.position)
   window.requestAnimationFrame(animate)
   c.fillStyle = 'black'
   c.fillRect(0, 0, canvas.width, canvas.height)
@@ -193,10 +201,13 @@ function animate() {
   }
 
   // jumping
-  if (player.velocity.y < 0) {
-    player.switchSprite('jump')
-  } else if (player.velocity.y > 0) {
-    player.switchSprite('fall')
+  // if (player.velocity.y < 0) {
+  //   player.switchSprite('jump')
+  // } else if (player.velocity.y > 0) {
+  //   player.switchSprite('fall')
+  // }
+  if (keys.w.pressed) {
+    player.velocity.y = -20 
   }
 
   // Enemy movement
@@ -281,7 +292,9 @@ window.addEventListener('keydown', (event) => {
         player.lastKey = 'a'
         break
       case 'w':
-        player.velocity.y = -20
+        // player.velocity.y = -20
+        keys.w.pressed = true
+        player.lastKey = 'w'
         break
       case ' ':
         player.attack()
@@ -300,7 +313,9 @@ window.addEventListener('keydown', (event) => {
         enemy.lastKey = 'ArrowLeft'
         break
       case 'ArrowUp':
-        enemy.velocity.y = -20
+        // enemy.velocity.y = -20
+        keys.ArrowUp.pressed = true
+        player.lastKey = 'ArrowUp'
         break
       case 'ArrowDown':
         enemy.attack()
@@ -318,6 +333,8 @@ window.addEventListener('keyup', (event) => {
     case 'a':
       keys.a.pressed = false
       break
+    case 'w':
+      keys.w.pressed = false
   }
 
   // enemy keys
