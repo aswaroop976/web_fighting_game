@@ -28,7 +28,7 @@ const shop = new Sprite({
 
 const player = new Fighter({
   position: {
-    x: 0,
+    x: 29,
     y: 0
   },
   velocity: {
@@ -200,7 +200,7 @@ function animate() {
 
   // player movement
 
-  if (keys.a.pressed && player.lastKey === 'a') {
+  if (keys.a.pressed && player.lastKey === 'a' && player.position.x >=29) {//29 corresponds to the left edge of the canvas
     player.velocity.x = -5
     player.switchSprite('run')
   } else if (keys.d.pressed && player.lastKey === 'd') {
