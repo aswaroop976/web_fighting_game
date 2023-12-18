@@ -1,0 +1,23 @@
+{
+  "name": "web-fighting-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aswaroop976/web_fighting_game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aswaroop976/web_fighting_game/issues"
+  },
+  "homepage": "https://github.com/aswaroop976/web_fighting_game#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.15.1"
+  }
+}
