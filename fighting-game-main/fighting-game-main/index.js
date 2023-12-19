@@ -363,3 +363,7 @@ window.addEventListener('keyup', (event) => {
       break
   }
 })
+
+// const WebSocket = require('ws');
+const signalingServer = new WebSocket('ws://localhost:8080');
+
